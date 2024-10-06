@@ -17,6 +17,15 @@ public class Person {
     private char gender;
     private double height;
     private Address address;
+    private float bmi;
+
+    public float getBmi() {
+        return bmi;
+    }
+
+    public void setBmi(float bmi) {
+        this.bmi = bmi;
+    }
 
     public Address getAddress() {
         return address;

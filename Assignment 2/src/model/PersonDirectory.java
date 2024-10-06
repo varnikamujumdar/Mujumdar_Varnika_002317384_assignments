@@ -19,7 +19,7 @@ public class PersonDirectory {
         this.persons=new ArrayList<Person>();
     }
     
-    public ArrayList<Person> getPerson()
+    public ArrayList<Person> getPersons()
     {
         return persons;
     }
@@ -41,65 +41,15 @@ public class PersonDirectory {
         persons.remove(person);
     }
     
-    public Person searchPersonByFirstName(String firstName)
-    {
-        for(Person p : persons)
-        {
-            if(p.getFirstName().contains(firstName))
-            {
-                return p;
-            }
-        }
-        return null;
+    public Person searchPerson(String searchAttribute){
+    
+       for(Person p : persons)
+       {
+           if(p.getFirstName().contains(searchAttribute) || p.getLastName().contains(searchAttribute) || p.getAddress().getHstreetAddress().contains(searchAttribute) || p.getAddress().getWstreetAddress().contains(searchAttribute))
+           {
+               return p;
+           }
+       }
+       return null;
     }
-    
-     public Person searchPersonByLastName(String lastName)
-    {
-        for(Person p : persons)
-        {
-            if(p.getLastName().contains(lastName))
-            {
-                return p;
-            }
-        }
-        return null;
-    }
-     
-      public Person searchPersonByHomeStreetAddress(String hstreetAddress)
-    {
-        for(Person p : persons)
-        {
-            if(p.getAddress().getHstreetAddress().contains(hstreetAddress))
-            {
-                return p;
-            }
-        }
-        return null;
-    }
-      
-      public Person searchPersonByWorkStreetAddress(String wstreetAddress)
-    {
-        for(Person p : persons)
-        {
-            if(p.getAddress().getWstreetAddress().contains(wstreetAddress))
-            {
-                return p;
-            }
-        }
-        return null;
-    }
-     
-     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }

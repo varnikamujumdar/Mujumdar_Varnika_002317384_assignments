@@ -4,17 +4,29 @@
  */
 package ui;
 
+import java.awt.CardLayout;
+import model.Address;
+import model.Person;
+import model.PersonDirectory;
+import ui.PersonManager.PersonProfileWorkAreaJPanel;
+
 /**
  *
- * @author Manasvi Mujumdar
+ * @author Varnika Mujumdar
  */
 public class MainJFrame extends javax.swing.JFrame {
+    
+    private PersonDirectory personDirectory;
+    
+    private Person person;
 
     /**
      * Creates new form MainJFrame
      */
     public MainJFrame() {
         initComponents();
+        this.personDirectory = new PersonDirectory();
+        generateDemoData();
     }
 
     /**
@@ -40,22 +52,27 @@ public class MainJFrame extends javax.swing.JFrame {
         btnPersonProfile.setForeground(new java.awt.Color(51, 0, 51));
         btnPersonProfile.setText("PERSON PROFILE");
         btnPersonProfile.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnPersonProfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPersonProfileActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout topJPanelLayout = new javax.swing.GroupLayout(topJPanel);
         topJPanel.setLayout(topJPanelLayout);
         topJPanelLayout.setHorizontalGroup(
             topJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(topJPanelLayout.createSequentialGroup()
-                .addGap(197, 197, 197)
+                .addGap(119, 119, 119)
                 .addComponent(btnPersonProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(246, Short.MAX_VALUE))
+                .addContainerGap(239, Short.MAX_VALUE))
         );
         topJPanelLayout.setVerticalGroup(
             topJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, topJPanelLayout.createSequentialGroup()
-                .addContainerGap(31, Short.MAX_VALUE)
+                .addContainerGap(27, Short.MAX_VALUE)
                 .addComponent(btnPersonProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
+                .addGap(23, 23, 23))
         );
 
         jSplitPane1.setTopComponent(topJPanel);
@@ -76,12 +93,21 @@ public class MainJFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jSplitPane1)
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnPersonProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPersonProfileActionPerformed
+        // TODO add your handling code here:
+        PersonProfileWorkAreaJPanel panel = new PersonProfileWorkAreaJPanel(userProcessContainer, personDirectory);
+        userProcessContainer.add("PersonProfileWorkAreaJPanel", panel);
+        
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnPersonProfileActionPerformed
 
     /**
      * @param args the command line arguments
@@ -124,4 +150,55 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel topJPanel;
     private javax.swing.JPanel userProcessContainer;
     // End of variables declaration//GEN-END:variables
+
+    private void generateDemoData() {
+        
+        Person newPerson = personDirectory.addPerson();
+        newPerson.setFirstName("Varnika");
+        newPerson.setLastName("Mujumdar");
+        newPerson.setAge(23);
+        newPerson.setGender('F');
+        newPerson.setHeight(157.48);
+        newPerson.setBmi(19.5f);
+        newPerson.setSocialSecurityNumber("123456");
+        Address newAddress = new Address();
+        newAddress.setHstreetAddress("Park Drive");
+        newAddress.setHunitNumber(14);
+        newAddress.setHcity("Boston");
+        newAddress.setHstate("Masachussets");
+        newAddress.setHzipCode("02215");
+        newAddress.setHphoneNumber("6175059186");
+        newAddress.setWstreetAddress("Park Drive");
+        newAddress.setWunitNumber(14);
+        newAddress.setWcity("Boston");
+        newAddress.setWstate("Masachussets");
+        newAddress.setWzipCode("02215");
+        newAddress.setWphoneNumber("6175059186");
+        newPerson.setAddress(newAddress);
+        
+        Person anotherPerson = personDirectory.addPerson();
+        anotherPerson.setFirstName("Manasvi");
+        anotherPerson.setLastName("Mujumdar");
+        anotherPerson.setAge(16);
+        anotherPerson.setGender('F');
+        anotherPerson.setHeight(157.48);
+        anotherPerson.setBmi(18.5f);
+        anotherPerson.setSocialSecurityNumber("78910");
+        Address anotherAddress = new Address();
+        anotherAddress.setHstreetAddress("Kharadi");
+        anotherAddress.setHunitNumber(101);
+        anotherAddress.setHcity("Pune");
+        anotherAddress.setHstate("Maharashtra");
+        anotherAddress.setHzipCode("411014");
+        anotherAddress.setHphoneNumber("9168246872");
+        anotherAddress.setWstreetAddress("Kharadi");
+        anotherAddress.setWunitNumber(101);
+        anotherAddress.setWcity("Pune");
+        anotherAddress.setWstate("Maharashtra");
+        anotherAddress.setWzipCode("411014");
+        anotherAddress.setWphoneNumber("9168246872");
+        anotherPerson.setAddress(anotherAddress);
+        
+        
+    }
 }
