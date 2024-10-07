@@ -22,7 +22,7 @@
                   <Component id="btnListPerson" linkSize="3" min="-2" pref="139" max="-2" attributes="0"/>
                   <Component id="btnAddPerson" linkSize="3" min="-2" pref="139" max="-2" attributes="0"/>
                   <Component id="btnSearch" linkSize="3" min="-2" pref="139" max="-2" attributes="0"/>
-                  <Component id="txtSearchField" linkSize="3" alignment="0" min="-2" pref="139" max="-2" attributes="0"/>
+                  <Component id="txtSearchBox" linkSize="3" alignment="0" min="-2" pref="139" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="553" max="32767" attributes="0"/>
           </Group>
@@ -36,7 +36,7 @@
               <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
               <Component id="btnListPerson" linkSize="2" min="-2" pref="47" max="-2" attributes="0"/>
               <EmptySpace pref="109" max="32767" attributes="0"/>
-              <Component id="txtSearchField" linkSize="2" min="-2" pref="37" max="-2" attributes="0"/>
+              <Component id="txtSearchBox" linkSize="2" min="-2" pref="37" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
               <Component id="btnSearch" linkSize="2" min="-2" pref="37" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
@@ -78,9 +78,9 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSearchActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtSearchField">
+    <Component class="javax.swing.JTextField" name="txtSearchBox">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSearchFieldActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSearchBoxActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

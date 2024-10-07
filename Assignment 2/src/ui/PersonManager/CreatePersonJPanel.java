@@ -467,17 +467,45 @@ public class CreatePersonJPanel extends javax.swing.JPanel {
         String hcity = txtCity1.getText();
         String hstate = txtState1.getText();
         String hzipCode = txtZipCode1.getText();
-        String hphoneNumber = txtPhoneNumber2.getText();
+        String hphoneNumber = txtPhoneNumber1.getText();
         String wstreetAddress = txtStreetAddress2.getText();
         int wunitNumber;
         String wcity = txtCity2.getText();
         String wstate = txtState2.getText();
         String wzipCode = txtZipCode2.getText();
         String wphoneNumber = txtPhoneNumber2.getText();
+        Character gender=null;
+       
         
+        try
+        {
+            if (genderInput != null && !genderInput.isEmpty())
+            {
+              gender = genderInput.charAt(0);
+              if(gender!='M' && gender!='F')
+                {
+                throw new RuntimeException();
+                }
+            }
+        }catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, "Please enter valid gender", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        try
+        {
+            age = Integer.parseInt(txtAge.getText());
+             if (age < 0 || age > 120) {
+             throw new IllegalArgumentException("Age must be between 0 and 120.");
+    }
+        }catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(this, "Please enter valid age", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         
         try{
-            age = Integer.parseInt(txtAge.getText());
             height=Double.parseDouble(txtHeight.getText());
             bmi=Float.parseFloat(txtBMI.getText());
             hunitNumber = Integer.parseInt(txtUnitNumber1.getText());
@@ -489,13 +517,34 @@ public class CreatePersonJPanel extends javax.swing.JPanel {
             return;
         }
         
-        if(firstName.isBlank() || lastName.isBlank() ||  socialSecurityNumber.isBlank() || genderInput.isBlank() || hstreetAddress.isBlank() ||  hcity.isBlank() || hstate.isBlank() || hzipCode.isBlank() || hphoneNumber.isBlank() || wstreetAddress.isBlank() || wcity.isBlank() || wstate.isBlank() || wzipCode.isBlank() || wphoneNumber.isBlank())
+        if(firstName.isBlank() || lastName.isBlank() ||  socialSecurityNumber.isBlank() || hstreetAddress.isBlank() ||  hcity.isBlank() || hstate.isBlank() || hzipCode.isBlank() || hphoneNumber.isBlank() || wstreetAddress.isBlank() || wcity.isBlank() || wstate.isBlank() || wzipCode.isBlank() || wphoneNumber.isBlank())
         {
             JOptionPane.showMessageDialog(this, "All fields are mandatory.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
+        try{
+        if(hphoneNumber.length()!=10)
+        {
+            throw new RuntimeException();
+        }
+        }catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(this, "Enter valid Home Phone Number", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         
-         Character gender = genderInput.charAt(0);
+        try{
+        if(wphoneNumber.length()!=10)
+        {
+            throw new RuntimeException();
+        }
+        }catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(this, "Enter valid Work Phone Number", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        
          Person p = personDirectory.addPerson();
          p.setFirstName(firstName);
          p.setLastName(lastName);

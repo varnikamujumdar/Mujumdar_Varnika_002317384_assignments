@@ -5,7 +5,9 @@
 package ui.PersonManager;
 
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import model.Person;
 import model.PersonDirectory;
 
 /**
@@ -39,7 +41,7 @@ public class PersonProfileWorkAreaJPanel extends javax.swing.JPanel {
         btnAddPerson = new javax.swing.JButton();
         btnListPerson = new javax.swing.JButton();
         btnSearch = new javax.swing.JButton();
-        txtSearchField = new javax.swing.JTextField();
+        txtSearchBox = new javax.swing.JTextField();
 
         btnAddPerson.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnAddPerson.setText("Add Person");
@@ -65,9 +67,9 @@ public class PersonProfileWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        txtSearchField.addActionListener(new java.awt.event.ActionListener() {
+        txtSearchBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSearchFieldActionPerformed(evt);
+                txtSearchBoxActionPerformed(evt);
             }
         });
 
@@ -81,11 +83,11 @@ public class PersonProfileWorkAreaJPanel extends javax.swing.JPanel {
                     .addComponent(btnListPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAddPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSearchBox, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(553, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAddPerson, btnListPerson, btnSearch, txtSearchField});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAddPerson, btnListPerson, btnSearch, txtSearchBox});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -95,19 +97,19 @@ public class PersonProfileWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(105, 105, 105)
                 .addComponent(btnListPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
-                .addComponent(txtSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtSearchBox, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(105, 105, 105)
                 .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(101, 101, 101))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnAddPerson, btnListPerson, btnSearch, txtSearchField});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnAddPerson, btnListPerson, btnSearch, txtSearchBox});
 
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtSearchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchFieldActionPerformed
+    private void txtSearchBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSearchFieldActionPerformed
+    }//GEN-LAST:event_txtSearchBoxActionPerformed
 
     private void btnAddPersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddPersonActionPerformed
         // TODO add your handling code here:
@@ -130,6 +132,28 @@ public class PersonProfileWorkAreaJPanel extends javax.swing.JPanel {
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
         
+        if(!txtSearchBox.getText().isBlank())
+        {
+            String searchAttribute = txtSearchBox.getText();
+            Person foundPerson = personDirectory.searchPerson(searchAttribute);
+            
+            if(foundPerson!=null)
+            {
+                ViewPersonJPanel panel = new ViewPersonJPanel(userProcessContainer, personDirectory, foundPerson);
+                userProcessContainer.add("ViewAccountJPanel", panel);
+                CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+                layout.next(userProcessContainer);
+            }
+            else 
+            {
+                JOptionPane.showMessageDialog(null, "Person Profile not found. Please try again.", "Warning" ,JOptionPane.WARNING_MESSAGE);
+            }
+        }
+        else 
+        {
+            JOptionPane.showMessageDialog(null, "Please enter all valid details", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+        
     }//GEN-LAST:event_btnSearchActionPerformed
 
 
@@ -137,6 +161,6 @@ public class PersonProfileWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnAddPerson;
     private javax.swing.JButton btnListPerson;
     private javax.swing.JButton btnSearch;
-    private javax.swing.JTextField txtSearchField;
+    private javax.swing.JTextField txtSearchBox;
     // End of variables declaration//GEN-END:variables
 }
