@@ -239,7 +239,7 @@ private static void createCourseOffers(CourseSchedule courseSchedule) {
                 }
                 
                 System.out.printf("GPA: %.2f%n", student.calculateGPA());
-                System.out.printf("Tuition Paid: $%.2f%n", totalTuition);
+                System.out.printf("Tuition fee Paid: $%.2f%n", totalTuition);
             }
         }
     }
