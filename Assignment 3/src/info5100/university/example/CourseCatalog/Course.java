@@ -118,5 +118,6 @@ public class Course {
 
     public List<StudentProfile> getEnrolledStudents() {
         return Collections.unmodifiableList(enrolledStudents);
+        
     }
 }

@@ -88,5 +88,6 @@ public class CourseCatalog {
         return courseList.stream()
                          .filter(course -> !course.isCore())
                          .toList();
+        
     }
 }
