@@ -95,7 +95,7 @@ public class Degree {
         return totalCredits;
     }
 
-    // Getters and setters
+   
     public String getTitle() {
         return title;
     }
