@@ -26,6 +26,7 @@ public class FacultyAssignment {
     }
        public void seProfRating(double r){
            
+           
            tracerating = r;
        }
     public FacultyProfile getFacultyProfile(){

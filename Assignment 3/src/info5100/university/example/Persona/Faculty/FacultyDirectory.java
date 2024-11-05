@@ -7,10 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Represents a directory of faculty profiles within a specific department,
- * managing both faculty profiles and course offers.
- */
+
 public class FacultyDirectory {
 
     private Department department; // The department the faculty directory belongs to
